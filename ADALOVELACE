@@ -6,3 +6,28 @@ Los trabajos de Ada Lovelace continúan vigentes en la actualidad, hasta el punt
 Su progresión en sus estudios se vio interrumpida por la maternidad. A los veinte años Ada Lovelace contrajo matrimonio con William King, Conde de Lovelace. Nace de ahí el nombre de Lady Ada Lovelace, por el que es conocida en la actualidad. A su lado tuvo tres hijos: Bryon Noel Byron, Annabella y Ralph Gordon. Ada Lovelace murió de cáncer el 27 de noviembre de 1852.
 
 http://www.lavozdegalicia.es/noticia/sociedad/2012/12/10/ada-lovelace-implicacion-maquina-analitica-babbage/00031355146716765243152.htm
+
+
+La técnica de diseño de algoritmos llamada "divide y vencerás" (divide and conquer) consiste en descomponer el problema original en varios sub-problemas más sencillos, para luego resolver éstos mediante un cálculo sencillo. Por último, se combinan los resultados de cada sub-problema para obtener la solución del problema original. El pseudocódigo sería:
+funcion divide_y_venceras_1(problema)
+{
+   descomponer el problema en n subproblemas más pequeños;
+   para i=1 hasta n hacer
+      resolver el subproblema k;
+   combinar las n soluciones;
+ }
+Un ejemplo de "divide y vencerás" es la ordenación rápida, o quicksort, utilizada para ordenar arrays. En ella, se dividía el array en dos sub-arrays, para luego resolver cada uno por separado, y unirlos (ver algoritmos de ordenación). El ahorro de tiempo es grande: el tiempo necesario para ordenar un array de elementos mediante el método de la burbuja es cuadrático: kN2. Si dividimos el array en dos y ordenamos cada uno de ellos, el tiempo necesario para resolverlo es ahora k(N/2)2+k(N/2)2=(kN2)/2. El tiempo necesario para ordenarlo es la mitad, pero sigue siendo cuadrático.
+Pero ahora, si los subproblemas son todavía demasiado grandes, ¿por qué no utilizar la misma táctica con ellos, esto es, dividirlos a ellos también, utilizando un algoritmo recursivo (ver recursividad) que vaya dividiendo más el sub-problema hasta que su solución sea trivial? Un algoritmo del tipo:
+funcion divide_y_venceras(problema)
+{
+   si el problema es trivial
+      entonces resolver el problema;
+   si no es trivial
+   {
+      descomponer el problema en n subproblemas más pequeños;
+      para i=1 hasta n hacer
+         divide_y_venceras(subproblema_k);
+      combinar las n soluciones;
+    }
+ }
+Si aplicamos este método al quicksort, el tiempo disminuye hasta ser logarítmico, con lo que el tiempo ahorrado es mayor cuanto más aumenta N.
